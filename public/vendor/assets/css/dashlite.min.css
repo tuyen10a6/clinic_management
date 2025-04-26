@@ -30764,3 +30764,7 @@ body.dark-mode.ui-shady, body.dark-mode.ui-clean, body.dark-mode.bg-lighter, bod
   background-color: #023f88 !important;
   border-color: #023f88 !important;
 }
+
+* {
+  font-family: sans-serif !important;
+}
