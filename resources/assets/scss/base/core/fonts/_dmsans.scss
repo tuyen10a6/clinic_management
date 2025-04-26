@@ -1,0 +1,35 @@
+@font-face {
+    font-family: 'DM Sans';
+    src: url('/statics/fonts/DMSans-Bold.eot');
+    src: local('DM Sans Bold'), local('DMSans-Bold'),
+        url('/statics/fonts/DMSans-Bold.eot#iefix') format('embedded-opentype'),
+        url('/statics/fonts/DMSans-Bold.woff2') format('woff2'),
+        url('/statics/fonts/DMSans-Bold.woff') format('woff'),
+        url('/statics/fonts/DMSans-Bold.ttf') format('truetype');
+    font-weight: bold;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'DM Sans';
+    src: url('/statics/fonts/DMSans-Medium.eot');
+    src: local('DM Sans Medium'), local('DMSans-Medium'),
+        url('/statics/fonts/DMSans-Medium.eot#iefix') format('embedded-opentype'),
+        url('/statics/fonts/DMSans-Medium.woff2') format('woff2'),
+        url('/statics/fonts/DMSans-Medium.woff') format('woff'),
+        url('/statics/fonts/DMSans-Medium.ttf') format('truetype');
+    font-weight: 500;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'DM Sans';
+    src: url('/statics/fonts/DMSans-Regular.eot');
+    src: local('DM Sans Regular'), local('DMSans-Regular'),
+        url('/statics/fonts/DMSans-Regular.eot#iefix') format('embedded-opentype'),
+        url('/statics/fonts/DMSans-Regular.woff2') format('woff2'),
+        url('/statics/fonts/DMSans-Regular.woff') format('woff'),
+        url('/statics/fonts/DMSans-Regular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
