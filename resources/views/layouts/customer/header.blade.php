@@ -1,7 +1,9 @@
 <div class="header" style=" position: sticky; top: 0; z-index: 100">
     <div style=" background-color: #D9E7F5; height: 80px" class="d-flex align-center justify-center">
         <div>
-            <img src="{{asset('statics/images/logo-top.png')}}"/>
+            <a href="{{route('home')}}">
+                <img src="{{asset('statics/images/logo-top.png')}}"/>
+            </a>
         </div>
         <div class="ms-4">
             <input style="min-height: 40px;
