@@ -1,1 +1,1 @@
-dashboard Lich Kham
+@extends('layouts/doctor/master')
