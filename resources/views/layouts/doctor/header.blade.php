@@ -198,16 +198,27 @@
                             <div class="dropdown-foot center"><a href="#">View All</a></div>
                         </div>
                     </li>
-                    <li class="dropdown user-dropdown"><a href="#" class="dropdown-toggle me-n1"
-                                                          data-bs-toggle="dropdown">
+                    <li class="dropdown user-dropdown">
+                        <a href="#" class="dropdown-toggle me-n1"
+                           data-bs-toggle="dropdown">
                             <div class="user-toggle">
                                 <div class="user-avatar sm"><em class="icon ni ni-user-alt"></em></div>
                                 <div class="user-info d-none d-xl-block">
-                                    <div class="user-status user-status-unverified">{{\Illuminate\Support\Facades\Auth::user()->permission}}</div>
-                                    <div class="user-name dropdown-indicator">{{\Illuminate\Support\Facades\Auth::user()->name}}</div>
+                                    <div
+                                        class="user-status user-status-unverified">{{\Illuminate\Support\Facades\Auth::user()->permission}}</div>
+                                    <div
+                                        class="user-name dropdown-indicator">{{\Illuminate\Support\Facades\Auth::user()->name}}</div>
                                 </div>
                             </div>
                         </a>
+                        <div class="dropdown-menu">
+                            <ul class="link-list-opt">
+                                <li><a href="#"><span>Cập nhật thông tin</span></a></li>
+                                <li><a href="#"><span>Thông báo</span></a></li>
+                                <li><a href="#"></em><span>Đổi mật khẩu</span></a></li>
+                                <li><a href="#"></em><span>Đăng xuất</span></a></li>
+                            </ul>
+                        </div>
                     </li>
                 </ul>
             </div>
