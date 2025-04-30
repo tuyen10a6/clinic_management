@@ -213,7 +213,7 @@
                         </a>
                         <div class="dropdown-menu">
                             <ul class="link-list-opt">
-                                <li><a href="#"><span>Cập nhật thông tin</span></a></li>
+                                <li><a href="{{route('doctor-update-view')}}"><span>Cập nhật thông tin</span></a></li>
                                 <li><a href="#"><span>Thông báo</span></a></li>
                                 <li><a href="#"></em><span>Đổi mật khẩu</span></a></li>
                                 <li><a href="#"></em><span>Đăng xuất</span></a></li>

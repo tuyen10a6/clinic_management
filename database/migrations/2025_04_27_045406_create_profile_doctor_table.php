@@ -15,9 +15,9 @@ class CreateProfileDoctorTable extends Migration
             $table->unsignedBigInteger('chuyen_khoa_id');
             $table->foreign('chuyen_khoa_id')->references('id')->on('chuyen_khoa');
             $table->string('bio')->nullable();
-            $table->string('gioi_thieu_chung')->nullable();
-            $table->string('hoc_van')->nullable();
-            $table->string('qua_trinh_cong_tac')->nullable();
+            $table->text('gioi_thieu_chung')->nullable();
+            $table->text('hoc_van')->nullable();
+            $table->text('qua_trinh_cong_tac')->nullable();
             $table->timestamps();
         });
     }

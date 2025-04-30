@@ -8,6 +8,10 @@ let build_js = [
     {
         from: "/resources/assets/js/base/dashlite.js",
         to: "/js/dashlite.js"
+    },
+    {
+        from: "/resources/js/app.js",
+        to: "/js/app.js"
     }
 ];
 
