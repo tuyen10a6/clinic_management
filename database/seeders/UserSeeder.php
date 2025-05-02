@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\Hash;
 
 class UserSeeder extends Seeder
 {
-    public function run()
+    public function run(): void
     {
         User::query()->create([
             'name'       => 'TS. BSCKII Lê Quốc Việt',

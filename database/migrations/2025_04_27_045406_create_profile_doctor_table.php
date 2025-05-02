@@ -14,6 +14,7 @@ class CreateProfileDoctorTable extends Migration
             $table->foreign('user_id')->references('id')->on('users');
             $table->unsignedBigInteger('chuyen_khoa_id');
             $table->foreign('chuyen_khoa_id')->references('id')->on('chuyen_khoa');
+            $table->integer('phone')->nullable();
             $table->string('bio')->nullable();
             $table->text('gioi_thieu_chung')->nullable();
             $table->text('hoc_van')->nullable();

@@ -202,7 +202,9 @@
                         <a href="#" class="dropdown-toggle me-n1"
                            data-bs-toggle="dropdown">
                             <div class="user-toggle">
-                                <div class="user-avatar sm"><em class="icon ni ni-user-alt"></em></div>
+                                <div class="user-avatar sm">
+                                    <img src="{{ auth()->user()->image ? asset('storage/' . auth()->user()->image) : asset('statics/images/profile-default.png') }}" alt="Phạm Xuân Tuyển" style="border-radius: 50%; object-fit: cover; width: 100%; height: 100%">
+                                </div>
                                 <div class="user-info d-none d-xl-block">
                                     <div
                                         class="user-status user-status-unverified">{{\Illuminate\Support\Facades\Auth::user()->permission}}</div>
@@ -214,9 +216,14 @@
                         <div class="dropdown-menu">
                             <ul class="link-list-opt">
                                 <li><a href="{{route('doctor-update-view')}}"><span>Cập nhật thông tin</span></a></li>
-                                <li><a href="#"><span>Thông báo</span></a></li>
                                 <li><a href="#"></em><span>Đổi mật khẩu</span></a></li>
-                                <li><a href="#"></em><span>Đăng xuất</span></a></li>
+                                <li>
+                                    <form action="{{route('logout')}}" method="post">
+                                        @csrf
+                                        <button class="btn" type="submit"><span>Đăng xuất</span></button>
+                                    </form>
+
+                                </li>
                             </ul>
                         </div>
                     </li>
