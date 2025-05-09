@@ -10,11 +10,27 @@ class UserSeeder extends Seeder
 {
     public function run(): void
     {
-        User::query()->create([
-            'name'       => 'TS. BSCKII Lê Quốc Việt',
-            'email'      => 'lequocviet@gmail.com',
-            'password'   => Hash::make('tuyen10a6'),
-            'permission' => 'doctor'
-        ]);
+        $data = [
+            [
+                'name'       => 'TS. BSCKII Lê Quốc Việt',
+                'email'      => 'lequocviet@gmail.com',
+                'password'   => Hash::make('tuyen10a6'),
+                'permission' => 'doctor'
+            ],
+            [
+                'name'       => 'admin',
+                'email'      => 'admin@gmail.com',
+                'password'   => Hash::make('tuyen10a6'),
+                'permission' => 'manager'
+            ],
+        ];
+
+        foreach ($data as $item) {
+            $check = User::query()->where('email', $item['email'])->first();
+            if (!$check) {
+                User::query()->create($item);
+                dump('Import Data User Successfully');
+            }
+        }
     }
 }

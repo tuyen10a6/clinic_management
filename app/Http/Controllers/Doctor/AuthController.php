@@ -20,7 +20,7 @@ class AuthController
             if (Auth::user()->permission == 'doctor') {
                 return redirect()->route('doctor-dashboard');
             } else {
-                return redirect()->route('doctor-dashboard');
+                return redirect()->route('test-type.index');
             }
 
         }

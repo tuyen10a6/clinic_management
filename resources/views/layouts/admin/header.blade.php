@@ -215,10 +215,10 @@
                         </a>
                         <div class="dropdown-menu">
                             <ul class="link-list-opt">
-                                <li><a href="{{route('doctor-update-view')}}"><span>Cập nhật thông tin</span></a></li>
+{{--                                <li><a href="{{route('doctor-update-view')}}"><span>Cập nhật thông tin</span></a></li>--}}
                                 <li><a href="#"></em><span>Đổi mật khẩu</span></a></li>
                                 <li>
-                                    <form action="{{route('doctor-logout')}}" method="post">
+                                    <form action="{{route('admin-logout')}}" method="post">
                                         @csrf
                                         <button class="btn" type="submit"><span>Đăng xuất</span></button>
                                     </form>

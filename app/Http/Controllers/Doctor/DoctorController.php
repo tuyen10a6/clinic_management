@@ -93,7 +93,7 @@ class DoctorController
 
     public function scheduleList()
     {
-        $schedules = DoctorSchedule::where('doctor_id', Auth::id())
+        $schedules = DoctorSchedule::query()->where('doctor_id', Auth::id())
                                    ->orderByRaw("FIELD(day_of_week, 'Monday','Tuesday','Wednesday','Thursday','Friday','Saturday','Sunday')")
                                    ->orderBy('start_time')
                                    ->get();

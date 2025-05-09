@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class ProfileDoctor extends Model
 {
@@ -12,4 +13,9 @@ class ProfileDoctor extends Model
     protected $table = 'profile_doctor';
 
     protected $guarded = [];
+
+    public function chuyenKhoa(): BelongsTo
+    {
+        return $this->belongsTo(ChuyenKhoa::class, 'chuyen_khoa_id', 'id');
+    }
 }
