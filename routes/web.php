@@ -8,6 +8,7 @@ use App\Http\Controllers\Doctor\PatientController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\AdminDoctorController;
 use App\Http\Controllers\Admin\AdminDoctorScheduleController;
+use App\Http\Controllers\Admin\AdminChuyenKhoaController;
 
 // Customer
 Route::get('/', [HomeController::class, 'index'])->name('home');
@@ -58,5 +59,13 @@ Route::middleware(['auth-admin'])->group(function () {
     Route::prefix('admin-doctor-schedule')->group(function () {
         Route::get('index', [AdminDoctorScheduleController::class, 'index'])->name('admin.doctor.schedule.index');
         Route::post('/admin/doctor-schedule/{id}/toggle-status', [AdminDoctorScheduleController::class, 'toggleStatus'])->name('admin.doctor_schedule.toggleStatus');
+    });
+    Route::prefix('chuyen-khoa')->group(function () {
+       Route::get('index', [AdminChuyenKhoaController::class, 'index'])->name('admin.chuyen-khoa.index');
+       Route::get('create', [AdminChuyenKhoaController::class, 'create'])->name('admin.chuyen-khoa.create');
+       Route::get('edit/{id}', [AdminChuyenKhoaController::class, 'edit'])->name('admin.chuyen-khoa.edit');
+       Route::post('store', [AdminChuyenKhoaController::class, 'store'])->name('admin.chuyen-khoa.store');
+       Route::post('destroy/{id}', [AdminChuyenKhoaController::class, 'destroy'])->name('admin.chuyen-khoa.destroy');
+       Route::post('update/{id}', [AdminChuyenKhoaController::class, 'update'])->name('admin.chuyen-khoa.update');
     });
 });

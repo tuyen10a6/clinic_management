@@ -58,7 +58,7 @@
                                                     class="nk-menu-icon">
                                                 </span><span
                                                     class="nk-menu-text">Các thủ thuật đang thực hiện</span></a></li>
-                                        <li class="nk-menu-item p-0 pb-1"><a href="#"
+                                        <li class="nk-menu-item p-0 pb-1 {{ request()->routeIs('admin.chuyen-khoa.*') ? 'active' : '' }}"><a href="{{route('admin.chuyen-khoa.index')}}"
                                                                              class="nk-menu-link"><span
                                                     class="nk-menu-icon">
                                                 </span><span
