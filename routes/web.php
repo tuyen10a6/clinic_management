@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\CustomerAdviceController;
 use App\Http\Controllers\Admin\TestTypeController;
 use App\Http\Controllers\Customer\HomeController;
 use App\Http\Controllers\Doctor\AuthController;
@@ -12,8 +13,7 @@ use App\Http\Controllers\Admin\AdminChuyenKhoaController;
 
 // Customer
 Route::get('/', [HomeController::class, 'index'])->name('home');
-
-
+Route::post('customer-advice/store', [CustomerAdviceController::class, 'store'])->name('customer_advice.store');
 // Doctor
 Route::get('login', [AuthController::class, 'index'])->name('login');
 Route::post('post-login', [AuthController::class, 'login'])->name('post-login');
@@ -67,5 +67,10 @@ Route::middleware(['auth-admin'])->group(function () {
        Route::post('store', [AdminChuyenKhoaController::class, 'store'])->name('admin.chuyen-khoa.store');
        Route::post('destroy/{id}', [AdminChuyenKhoaController::class, 'destroy'])->name('admin.chuyen-khoa.destroy');
        Route::post('update/{id}', [AdminChuyenKhoaController::class, 'update'])->name('admin.chuyen-khoa.update');
+    });
+    Route::prefix('customer-advice')->group(function () {
+        Route::get('index', [CustomerAdviceController::class, 'index'])->name('admin.customer-advice.index');
+        Route::get('edit/{id}', [CustomerAdviceController::class, 'edit'])->name('admin.customer-advice.edit');
+        Route::post('update/{id}', [CustomerAdviceController::class, 'update'])->name('admin.customer-advice.update');
     });
 });

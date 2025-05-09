@@ -496,26 +496,33 @@
     <div class="nk-block" style="background: #005594; margin: 30px 0px;  display: flex; justify-content: center;">
         <div style="width: 400px;  padding: 20px; border: 1px solid #ddd; border-radius: 10px; background: #f9f9f9; box-shadow: 0 2px 8px rgba(0,0,0,0.1); font-family: Arial, sans-serif;">
             <h2 style="text-align: center; margin-bottom: 20px; font-size: 24px; color: #333;">Đặt lịch khám bệnh</h2>
-            <form>
+            <form method="post" action="{{route('customer_advice.store')}}">
+                @csrf
                 <div style="margin-bottom: 15px;">
                     <label style="display: block; margin-bottom: 5px; font-weight: bold; color: #555;">Họ và tên</label>
-                    <input type="text" name="fullname" placeholder="Nhập họ và tên" style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 5px; box-sizing: border-box;">
+                    <input required type="text" name="name" placeholder="Nhập họ và tên" style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 5px; box-sizing: border-box;">
                 </div>
 
                 <div style="margin-bottom: 15px;">
                     <label style="display: block; margin-bottom: 5px; font-weight: bold; color: #555;">Số điện thoại</label>
-                    <input type="text" name="phone" placeholder="Nhập số điện thoại" style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 5px; box-sizing: border-box;">
+                    <input required type="text" name="phone" placeholder="Nhập số điện thoại" style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 5px; box-sizing: border-box;">
                 </div>
 
                 <div style="margin-bottom: 20px;">
                     <label style="display: block; margin-bottom: 5px; font-weight: bold; color: #555;">Nhu cầu khám</label>
-                    <textarea name="need" placeholder="Nhập nhu cầu khám" rows="4" style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 5px; box-sizing: border-box; resize: vertical;"></textarea>
+                    <textarea required name="note" placeholder="Nhập nhu cầu khám" rows="4" style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 5px; box-sizing: border-box; resize: vertical;"></textarea>
                 </div>
 
                 <button type="submit" style="width: 100%; background-color: #007BFF; color: white; padding: 12px; border: none; border-radius: 5px; font-size: 16px; cursor: pointer;">
                     Gửi đi
                 </button>
             </form>
+            @if(session('success'))
+                <div class="alert alert-success alert-dismissible fade show" role="alert">
+                    {{ session('success') }}
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+            @endif
         </div>
         <img style="width: 480px; margin-left: 40px" src="{{asset('statics/images/list_service.png')}}"/>
     </div>

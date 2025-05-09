@@ -26,7 +26,7 @@
                                     <ul class="nk-menu">
                                         <li class="nk-menu-heading"><h6 class="overline-title text-primary-alt">Danh
                                                 mục</h6></li>
-                                        <li class="nk-menu-item p-0 pb-1"><a href="#" class="nk-menu-link"><span
+                                        <li class="nk-menu-item p-0 pb-1 {{ request()->routeIs('admin.customer-advice.*') ? 'active' : '' }}"><a href="{{route('admin.customer-advice.index')}}" class="nk-menu-link"><span
                                                     class="nk-menu-icon">
                                                      </span><span
                                                     class="nk-menu-text">Quản lý lịch hẹn</span></a>

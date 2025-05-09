@@ -13,6 +13,7 @@ class CreateCustomerAdviceTable extends Migration
             $table->string('name');
             $table->string('phone');
             $table->string('note');
+            $table->enum('status', ['pending', 'called', 'done'])->default('pending');
             $table->timestamps();
         });
     }
