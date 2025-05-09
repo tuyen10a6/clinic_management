@@ -7,12 +7,27 @@ use Illuminate\Http\Request;
 
 class CustomerAdviceController
 {
-    public function index()
+    public function index(Request $request)
     {
-        $data = CustomerAdvice::all();
+        $query = CustomerAdvice::query();
 
-        return view('pages/admin/customer_advice/index', compact('data'));
+        if ($request->filled('name')) {
+            $query->where('name', 'like', '%' . $request->name . '%');
+        }
+
+        if ($request->filled('phone')) {
+            $query->where('phone', 'like', '%' . $request->phone . '%');
+        }
+
+        if ($request->filled('status')) {
+            $query->where('status', $request->status);
+        }
+
+        $data = $query->latest()->get();
+
+        return view('pages.admin.customer_advice.index', compact('data'));
     }
+
 
     public function create()
     {

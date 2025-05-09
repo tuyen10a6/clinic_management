@@ -6,6 +6,31 @@
         @if(session('success'))
             <div class="alert alert-success">{{ session('success') }}</div>
         @endif
+        <form method="GET" class="row g-3 mb-4">
+            <div class="col-md-3">
+                <input type="text" name="name" class="form-control" placeholder="Tìm theo tên"
+                       value="{{ request('name') }}">
+            </div>
+            <div class="col-md-2">
+                <input type="text" name="phone" class="form-control" placeholder="Tìm theo SĐT"
+                       value="{{ request('phone') }}">
+            </div>
+            <div class="col-md-2">
+                <select name="status" class="form-select">
+                    <option value="">-- Trạng thái --</option>
+                    <option value="pending" {{ request('status') == 'pending' ? 'selected' : '' }}>Chờ xử lý</option>
+                    <option value="called" {{ request('status') == 'called' ? 'selected' : '' }}>Đã gọi</option>
+                    <option value="done" {{ request('status') == 'done' ? 'selected' : '' }}>Hoàn tất</option>
+                </select>
+            </div>
+            <div class="col-md-2">
+                <button class="btn btn-primary">Tìm kiếm</button>
+            </div>
+            <div class="col-md-2">
+                <a href="{{ route('admin.customer-advice.index') }}" class="btn btn-secondary">Làm mới</a>
+            </div>
+        </form>
+
 
         <table class="table table-bordered">
             <thead>
