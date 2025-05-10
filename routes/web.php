@@ -3,6 +3,7 @@
 use App\Http\Controllers\Admin\CustomerAdviceController;
 use App\Http\Controllers\Admin\TestTypeController;
 use App\Http\Controllers\Customer\HomeController;
+use App\Http\Controllers\Customer\CustomerDoctorController;
 use App\Http\Controllers\Doctor\AuthController;
 use App\Http\Controllers\Doctor\DoctorController;
 use App\Http\Controllers\Doctor\PatientController;
@@ -11,15 +12,11 @@ use App\Http\Controllers\Admin\AdminDoctorController;
 use App\Http\Controllers\Admin\AdminDoctorScheduleController;
 use App\Http\Controllers\Admin\AdminChuyenKhoaController;
 
-// Customer
-Route::get('/', [HomeController::class, 'index'])->name('home');
-Route::post('customer-advice/store', [CustomerAdviceController::class, 'store'])->name('customer_advice.store');
-// Doctor
 Route::get('login', [AuthController::class, 'index'])->name('login');
 Route::post('post-login', [AuthController::class, 'login'])->name('post-login');
 Route::middleware(['auth-doctor'])->group(function () {
     Route::post('doctor/logout', [AuthController::class, 'logout'])->name('doctor-logout');
-    Route::prefix('doctor')->group(function () {
+    Route::prefix('manager-doctor')->group(function () {
         Route::get('dashboard', [DoctorController::class, 'index'])->name('doctor-dashboard');
         Route::get('profile', [DoctorController::class, 'update'])->name('doctor-update-view');
         Route::get('schedule', [DoctorController::class, 'scheduleList'])->name('doctor-schedule-view');
@@ -61,12 +58,12 @@ Route::middleware(['auth-admin'])->group(function () {
         Route::post('/admin/doctor-schedule/{id}/toggle-status', [AdminDoctorScheduleController::class, 'toggleStatus'])->name('admin.doctor_schedule.toggleStatus');
     });
     Route::prefix('chuyen-khoa')->group(function () {
-       Route::get('index', [AdminChuyenKhoaController::class, 'index'])->name('admin.chuyen-khoa.index');
-       Route::get('create', [AdminChuyenKhoaController::class, 'create'])->name('admin.chuyen-khoa.create');
-       Route::get('edit/{id}', [AdminChuyenKhoaController::class, 'edit'])->name('admin.chuyen-khoa.edit');
-       Route::post('store', [AdminChuyenKhoaController::class, 'store'])->name('admin.chuyen-khoa.store');
-       Route::post('destroy/{id}', [AdminChuyenKhoaController::class, 'destroy'])->name('admin.chuyen-khoa.destroy');
-       Route::post('update/{id}', [AdminChuyenKhoaController::class, 'update'])->name('admin.chuyen-khoa.update');
+        Route::get('index', [AdminChuyenKhoaController::class, 'index'])->name('admin.chuyen-khoa.index');
+        Route::get('create', [AdminChuyenKhoaController::class, 'create'])->name('admin.chuyen-khoa.create');
+        Route::get('edit/{id}', [AdminChuyenKhoaController::class, 'edit'])->name('admin.chuyen-khoa.edit');
+        Route::post('store', [AdminChuyenKhoaController::class, 'store'])->name('admin.chuyen-khoa.store');
+        Route::post('destroy/{id}', [AdminChuyenKhoaController::class, 'destroy'])->name('admin.chuyen-khoa.destroy');
+        Route::post('update/{id}', [AdminChuyenKhoaController::class, 'update'])->name('admin.chuyen-khoa.update');
     });
     Route::prefix('customer-advice')->group(function () {
         Route::get('index', [CustomerAdviceController::class, 'index'])->name('admin.customer-advice.index');
@@ -74,3 +71,9 @@ Route::middleware(['auth-admin'])->group(function () {
         Route::post('update/{id}', [CustomerAdviceController::class, 'update'])->name('admin.customer-advice.update');
     });
 });
+// Customer
+Route::get('/', [HomeController::class, 'index'])->name('home');
+Route::get('/customer-schedule', [CustomerDoctorController::class, 'customerSchedule'])->name('customer_schedule_doctor');
+Route::post('customer-advice/store', [CustomerAdviceController::class, 'store'])->name('customer_advice.store');
+Route::get('/doctor/{id}', [CustomerDoctorController::class, 'index'])->name('doctor.show');
+// Doctor

@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Mail\CustomerAdviceNotification;
 use App\Models\CustomerAdvice;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
 
 class CustomerAdviceController
 {
@@ -37,12 +39,19 @@ class CustomerAdviceController
     public function store(Request $request): \Illuminate\Http\RedirectResponse
     {
         $request->validate([
-            'name' => 'required',
+            'name'  => 'required',
             'phone' => 'required',
-            'note' => 'nullable',
+            'note'  => 'nullable',
+            'email' => 'nullable'
         ]);
 
-        CustomerAdvice::query()->create($request->only(['name', 'phone', 'note']));
+        $data = $request->only(['name', 'phone', 'note', 'email']);
+
+        CustomerAdvice::query()->create($data);
+
+        if ($request->get('email') && $request->get('email') != null) {
+            Mail::to($data['email'])->send(new CustomerAdviceNotification($data));
+        }
         return redirect()->back()->with('success', 'Tạo yêu cầu thành công');
     }
 

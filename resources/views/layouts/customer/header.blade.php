@@ -52,7 +52,7 @@
                 <span class="ps-2">Liên hệ</span>
             </a>
 
-            <a href="#" class="text-white btn btn-blue ms-2"
+            <a href="{{route('customer_schedule_doctor')}}" class="text-white btn btn-blue ms-2"
                style="width: 197px; background-color: #075796;" id="btndl">
                 <svg width="18" height="27" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 18.24 26.62">
                     <defs>
@@ -161,10 +161,9 @@
         border-radius: 5px;
         z-index: 10;
     ">
-                <div style="padding: 4px 0; border-bottom: 1px solid #eee;">Cơ xương khớp</div>
-                <div style="padding: 4px 0; border-bottom: 1px solid #eee;">Nội ung bướu</div>
-                <div style="padding: 4px 0; border-bottom: 1px solid #eee;">Xét nghiệm</div>
-                <div style="padding: 4px 0;">Ngoại khoa</div>
+                @foreach($chuyenKhoa as $item)
+                    <div style="padding: 4px 0; border-bottom: 1px solid #eee;">{{$item->ten_chuyen_khoa}}</div>
+                @endforeach
             </div>
         </div>
 

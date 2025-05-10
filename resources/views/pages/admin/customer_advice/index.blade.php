@@ -30,8 +30,6 @@
                 <a href="{{ route('admin.customer-advice.index') }}" class="btn btn-secondary">Làm mới</a>
             </div>
         </form>
-
-
         <table class="table table-bordered">
             <thead>
             <tr>
@@ -60,11 +58,11 @@
                     <td class="text-nowrap">
                         <a href="{{ route('admin.customer-advice.edit', $item->id) }}"
                            class="btn btn-sm btn-info">Sửa</a>
-{{--                        <form action="{{ route('admin.customer-advice.destroy', $item->id) }}" method="POST"--}}
-{{--                              style="display:inline-block">--}}
-{{--                            @csrf--}}
-{{--                            <button class="btn btn-sm btn-danger" onclick="return confirm('Xoá?')">Xoá</button>--}}
-{{--                        </form>--}}
+                        {{--                        <form action="{{ route('admin.customer-advice.destroy', $item->id) }}" method="POST"--}}
+                        {{--                              style="display:inline-block">--}}
+                        {{--                            @csrf--}}
+                        {{--                            <button class="btn btn-sm btn-danger" onclick="return confirm('Xoá?')">Xoá</button>--}}
+                        {{--                        </form>--}}
                     </td>
                 </tr>
             @endforeach

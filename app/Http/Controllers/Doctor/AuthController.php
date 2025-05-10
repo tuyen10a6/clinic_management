@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Doctor;
 
+use App\Models\ChuyenKhoa;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -10,7 +11,9 @@ class AuthController
 {
     public function index()
     {
-        return view('pages/doctor/login');
+        $chuyenKhoa = ChuyenKhoa::query()->get();
+        $doctors = User::query()->with('profileDoctor.chuyenKhoa')->where('permission', 'doctor')->get();
+        return view('pages/doctor/login', compact('doctors', 'chuyenKhoa'));
     }
 
     public function login(Request $request): \Illuminate\Http\RedirectResponse
