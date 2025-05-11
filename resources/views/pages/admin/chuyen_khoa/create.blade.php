@@ -10,6 +10,11 @@
                 <label for="ten_chuyen_khoa" class="form-label">Tên chuyên khoa</label>
                 <input type="text" name="ten_chuyen_khoa" class="form-control" value="{{ old('ten_chuyen_khoa') }}" required>
             </div>
+            <div class="mb-3">
+                <label for="gioi_thieu_chung" class="form-label">Giới thiệu chung</label>
+                <textarea name="gioi_thieu_chung" class="editor"
+                          rows="10"></textarea>
+            </div>
             <button class="btn btn-primary">Lưu</button>
         </form>
     </div>

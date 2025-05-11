@@ -18,15 +18,19 @@
                                                      class="rounded-circle"
                                                      style="max-width: 180px; height: 180px; object-fit: cover; border: 4px solid #e5e9f2;">
                                             </div>
-                                            <h5 class="mt-3 mb-1 text-primary">{{ $data->name }}</h5>
                                             <span class="badge badge-dim badge-outline-info">
                                             {{ $data->profileDoctor->chuyenKhoa->ten_chuyen_khoa ?? 'Chưa có chuyên khoa' }}
                                         </span>
                                         </div>
                                         <div class="col-md-4 text-center mt-3">
                                             <div>
+                                                <h5 class="mt-3 mb-1 text-primary">{{ $data->name }}</h5>
                                                  <span class="text-primary fs-18px"> Chuyên khoa:
                                                     {{ $data->profileDoctor->chuyenKhoa->ten_chuyen_khoa ?? 'Chưa có chuyên khoa' }}
+                                                </span>
+                                                <br/>
+                                                <span class="text-primary fs-18px">
+                                                    {{ $data->profileDoctor->bio ?? '' }}
                                                 </span>
                                             </div>
                                         </div>
