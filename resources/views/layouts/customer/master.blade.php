@@ -11,4 +11,17 @@
     @yield('content')
     @include('layouts/customer/footer')
 </body>
+    <script src="{{asset('vendor/assets/js/dashlite.js')}}"></script>
+    <script src="{{asset('vendor/assets/js/app.js')}}"></script>
+    <script src="{{ asset('/core/js/jquery.min.js') }}"></script>
+    <script src="{{ asset('/core/js/nioapp.min.js') }}"></script>
+    <script src="{{ asset('/core/js/clipboard.min.js') }}"></script>
+    <script src="{{ asset('/core/js/bootstrap.bundle.min.js') }}"></script>
+    <script src="{{ asset('/core/js/scripts.js') }}"></script>
+    <script src="{{ asset('vendor/assets/js/customer.js') }}"></script>
+    <script>
+        const SEARCH_DOCTOR_HOME = "{{route('search-doctor')}}";
+        const URL_PROJECT = "http://127.0.0.1:3003/storage";
+    </script>
+@yield('script')
 </html>

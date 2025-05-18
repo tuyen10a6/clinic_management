@@ -19,6 +19,7 @@
     },
     "dependencies": {
         "@ckeditor/ckeditor5-build-classic": "^41.4.2",
-        "bootstrap": "^5.2.3"
+        "bootstrap": "^5.2.3",
+        "jquery": "^3.6.4"
     }
 }

@@ -24,6 +24,7 @@
                     <option value="pending" {{ $advice->status == 'pending' ? 'selected' : '' }}>Chờ xử lý</option>
                     <option value="called" {{ $advice->status == 'called' ? 'selected' : '' }}>Đã gọi</option>
                     <option value="done" {{ $advice->status == 'done' ? 'selected' : '' }}>Hoàn thành</option>
+                    <option value="canceled" {{ $advice->status == 'canceled' ? 'selected' : '' }}>Huỷ</option>
                 </select>
             </div>
             <button class="btn btn-success">Cập nhật</button>

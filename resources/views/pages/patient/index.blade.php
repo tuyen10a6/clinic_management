@@ -52,7 +52,22 @@
                     <td>{{ $patient->gender }}</td>
                     <td>{{ $patient->birth_date }}</td>
                     <td>{{ $patient->created_at }}</td>
-                    <td class="text-primary">{{ $patient->status }}</td>
+                    <td class="text-primary">
+                        @if ($patient->status === 'pending')
+                            Chờ khám
+                        @elseif ($patient->status === 'in_progress')
+                            Đang khám
+                        @elseif ($patient->status === 'completed')
+                            Hoàn thành
+                        @elseif ($patient->status === 'cancelled')
+                            Huỷ
+                        @elseif ($patient->status === 'no_show')
+                            Không đến
+                        @else
+                            Không rõ
+                        @endif
+                    </td>
+
                     <td class="text-nowrap">
                         <a href="{{route('patient.detail', $patient->id)}}" class="btn btn-sm btn-secondary">
                             Chi tiết
@@ -65,6 +80,12 @@
                             @csrf
                             <button class="btn btn-sm btn-danger">Xoá</button>
                         </form>
+                        <a href="{{route('doctor.chi-dinh.index', $patient->id)}}" class="btn btn-sm btn-info">
+                           Các chỉ định
+                        </a>
+                        <a href="" class="btn btn-sm btn-info">
+                            Đơn thuốc
+                        </a>
                     </td>
                 </tr>
             @endforeach

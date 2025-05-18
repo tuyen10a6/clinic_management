@@ -21,6 +21,7 @@
                     <option value="pending" {{ request('status') == 'pending' ? 'selected' : '' }}>Chờ xử lý</option>
                     <option value="called" {{ request('status') == 'called' ? 'selected' : '' }}>Đã gọi</option>
                     <option value="done" {{ request('status') == 'done' ? 'selected' : '' }}>Hoàn tất</option>
+                    <option value="canceled" {{ request('status') == 'canceled' ? 'selected' : '' }}>Huỷ</option>
                 </select>
             </div>
             <div class="col-md-2">
@@ -51,8 +52,10 @@
                             <span class="badge bg-warning">Chờ xử lý</span>
                         @elseif($item->status == 'called')
                             <span class="badge bg-info">Đã gọi</span>
-                        @else
+                        @elseif($item->status == 'done')
                             <span class="badge bg-success">Hoàn thành</span>
+                        @else
+                            <span class="badge bg-danger">H</span>
                         @endif
                     </td>
                     <td class="text-nowrap">

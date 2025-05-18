@@ -5,15 +5,21 @@
                 <img src="{{asset('statics/images/logo-top.png')}}"/>
             </a>
         </div>
-        <div class="ms-4">
-            <input style="min-height: 40px;
-                      width: 350px;
-                      border-radius: 2em;
-                      border: 1px solid #ccc;
-                      padding: 5px 15px;
-                      font-size: 14px;" type="search" value="" name="s" id="s"
-                   placeholder="Tìm kiếm thông tin, bác sĩ, chuyên khoa,...">
+        <div class="ms-4" style="position: relative; width: 100%; max-width: 400px;">
+            <input
+                id="search-doctor"
+                type="search"
+                placeholder="Tìm kiếm bác sĩ..."
+                style="min-height: 40px; width: 100%; border-radius: 2em; border: 1px solid #ccc; padding: 5px 15px; font-size: 14px;">
+
+            <div id="doctor-results"
+                 style="position: absolute; top: 100%; left: 0; right: 0; z-index: 1000;
+                background: #fff; border: 1px solid #ddd; border-radius: 5px;
+                display: none; max-height: 300px; overflow-y: auto;">
+            </div>
         </div>
+
+
         <div class="header-info ms-4">
             <a href="#" class="text-white btn btn-blue btn-tel ms-2" style="width: 152px; background-color: #235C85;">
                 <svg width="17" height="23" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16.74 22.62">
@@ -114,12 +120,18 @@
         box-shadow: 0 2px 8px rgba(0,0,0,0.15);
         border-radius: 5px;
     ">
-                <div style="padding: 4px 0; border-bottom: 1px solid #eee;">Giới thiệu</div>
-                <div style="padding: 4px 0; border-bottom: 1px solid #eee;">Trang thiết bị y tế</div>
-                <div style="padding: 4px 0;">Nền tảng công nghệ</div>
+                <div style="padding: 4px 0; border-bottom: 1px solid #eee;">
+                    <a href="{{route('introduction.index')}}">
+                        Giới thiệu
+                    </a>
+                </div>
+                <div style="padding: 4px 0; border-bottom: 1px solid #eee;">
+                 <a href="{{route('thiet-bi-y-te.index')}}">
+                     Trang thiết bị y tế
+                 </a>
+                </div>
             </div>
         </div>
-
         <div style="color: white; margin-right: 20px; cursor: pointer; position: relative;"
              onmouseover="this.querySelector('div').style.display='block';"
              onmouseout="this.querySelector('div').style.display='none';"
@@ -162,7 +174,11 @@
         z-index: 10;
     ">
                 @foreach($chuyenKhoa as $item)
-                    <div style="padding: 4px 0; border-bottom: 1px solid #eee;">{{$item->ten_chuyen_khoa}}</div>
+                    <a href="{{route('chuyen-khoa.index', $item->id)}}"
+                       style="padding: 5px 0; border-bottom: 1px solid #eee; text-align: center">
+                        {{$item->ten_chuyen_khoa}}
+                    </a>
+                    <br/>
                 @endforeach
             </div>
         </div>
@@ -188,9 +204,12 @@
         border-radius: 5px;
         z-index: 10;
     ">
-                <div style="padding: 4px 0; border-bottom: 1px solid #eee;">Hồ sơ sức khoẻ</div>
+                <a href="{{route('chinh-sach-bao-hiem.index')}}">
                 <div style="padding: 4px 0; border-bottom: 1px solid #eee;">Chính sách bảo hiểm</div>
-                <div style="padding: 4px 0;">Chính sách khách hàng</div>
+                </a>
+                <a href="{{route('chinh-sach-khach-hang.index')}}">
+                    <div style="padding: 4px 0;">Chính sách khách hàng</div>
+                </a>
             </div>
         </div>
         <div style="color: white; margin-right: 20px; cursor: pointer; position: relative;"
@@ -212,8 +231,6 @@
         z-index: 10;
     ">
                 <div style="padding: 4px 0; border-bottom: 1px solid #eee;">Báo chí nói về chúng tôi</div>
-                <div style="padding: 4px 0; border-bottom: 1px solid #eee;">Hội thảo & Đào tạo</div>
-                <div style="padding: 4px 0;">Hoạt động Ưu đãi & Khuyến mại</div>
             </div>
         </div>
 

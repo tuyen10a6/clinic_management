@@ -20,6 +20,7 @@
     </div>
 </div>
 @yield('script')
+
 <script src="{{asset('vendor/assets/js/dashlite.js')}}"></script>
 <script src="{{asset('vendor/assets/js/app.js')}}"></script>
 <script src="{{ asset('/core/js/jquery.min.js') }}"></script>

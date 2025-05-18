@@ -1,10 +1,14 @@
 <?php
 
 use App\Http\Controllers\Admin\CustomerAdviceController;
+use App\Http\Controllers\Admin\MedicineController;
 use App\Http\Controllers\Admin\TestTypeController;
 use App\Http\Controllers\Customer\HomeController;
 use App\Http\Controllers\Customer\CustomerDoctorController;
+use App\Http\Controllers\Customer\CustomerChuyenKhoaController;
+use App\Http\Controllers\Customer\IntroductionController;
 use App\Http\Controllers\Doctor\AuthController;
+use App\Http\Controllers\Doctor\ChiDinhController;
 use App\Http\Controllers\Doctor\DoctorController;
 use App\Http\Controllers\Doctor\PatientController;
 use Illuminate\Support\Facades\Route;
@@ -34,6 +38,12 @@ Route::middleware(['auth-doctor'])->group(function () {
         Route::post('store', [PatientController::class, 'store'])->name('patient.store');
         Route::post('update/{id}', [PatientController::class, 'update'])->name('patient.update.post');
         Route::post('destroy/{id}', [PatientController::class, 'destroy'])->name('patient.destroy.post');
+    });
+    Route::prefix('chi-dinh')->group(function () {
+        Route::get('patient/{id}', [ChiDinhController::class, 'index'])->name('doctor.chi-dinh.index');
+        Route::get('show-print/{id}', [ChiDinhController::class, 'showPrint'])->name('doctor.show-print');
+        Route::post('store', [ChiDinhController::class, 'store'])->name('doctor.chi-dinh.store');
+        Route::post('update/{id}', [ChiDinhController::class, 'updateStatus'])->name('doctor.chi-dinh.update');
     });
 });
 Route::middleware(['auth-admin'])->group(function () {
@@ -70,10 +80,24 @@ Route::middleware(['auth-admin'])->group(function () {
         Route::get('edit/{id}', [CustomerAdviceController::class, 'edit'])->name('admin.customer-advice.edit');
         Route::post('update/{id}', [CustomerAdviceController::class, 'update'])->name('admin.customer-advice.update');
     });
+    Route::prefix('medicines')->group(function () {
+        Route::get('/', [MedicineController::class, 'index'])->name('medicines.index');
+        Route::get('/create', [MedicineController::class, 'create'])->name('medicines.create');
+        Route::post('/store', [MedicineController::class, 'store'])->name('medicines.store');
+        Route::get('/edit/{id}', [MedicineController::class, 'edit'])->name('medicines.edit');
+        Route::post('update/{id}', [MedicineController::class, 'update'])->name('medicines.update');
+        Route::post('/{id}', [MedicineController::class, 'destroy'])->name('medicines.destroy');
+    });
 });
 // Customer
 Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('/customer-schedule', [CustomerDoctorController::class, 'customerSchedule'])->name('customer_schedule_doctor');
 Route::post('customer-advice/store', [CustomerAdviceController::class, 'store'])->name('customer_advice.store');
 Route::get('/doctor/{id}', [CustomerDoctorController::class, 'index'])->name('doctor.show');
+Route::get('chuyen-khoa/{id}', [CustomerChuyenKhoaController::class, 'index'])->name('chuyen-khoa.index');
 // Doctor
+Route::get('introduction', [IntroductionController::class, 'index'])->name('introduction.index');
+Route::get('thiet-bi-y-te', [IntroductionController::class, 'thietBiYTe'])->name('thiet-bi-y-te.index');
+Route::get('search-doctor', [HomeController::class, 'searchDoctor'])->name('search-doctor');
+Route::get('chinh-sach-bao-hiem', [HomeController::class, 'chinhSachBaoHiem'])->name('chinh-sach-bao-hiem.index');
+Route::get('chinh-sach-khach-hang', [HomeController::class, 'chinhSachKhachHang'])->name('chinh-sach-khach-hang.index');

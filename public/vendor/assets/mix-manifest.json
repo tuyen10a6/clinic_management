@@ -1,6 +1,7 @@
 {
     "/js/dashlite.js": "/js/dashlite.js",
     "/js/app.js": "/js/app.js",
+    "/js/customer.js": "/js/customer.js",
     "/css/dashlite.css": "/css/dashlite.css",
     "/css/dashlite.min.css": "/css/dashlite.min.css"
 }

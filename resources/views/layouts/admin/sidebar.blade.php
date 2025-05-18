@@ -53,6 +53,12 @@
                                                 <span class="nk-menu-text">Danh mục xét nghiệm</span>
                                             </a>
                                         </li>
+                                        <li class="nk-menu-item p-0 pb-1 {{ request()->routeIs('medicines.*') ? 'active' : '' }}">
+                                            <a href="{{ route('medicines.index') }}" class="nk-menu-link">
+                                                <span class="nk-menu-icon"></span>
+                                                <span class="nk-menu-text">Danh mục thuốc</span>
+                                            </a>
+                                        </li>
                                         <li class="nk-menu-item p-0 pb-1"><a href=""
                                                                              class="nk-menu-link"><span
                                                     class="nk-menu-icon">

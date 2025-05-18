@@ -40,10 +40,11 @@ class AdminChuyenKhoaController
     {
         $request->validate([
             'ten_chuyen_khoa' => 'required|string|max:255',
+            'gioi_thieu_chung' => 'nullable',
         ]);
 
         $chuyenKhoa = ChuyenKhoa::query()->findOrFail($id);
-        $chuyenKhoa->update($request->only('ten_chuyen_khoa'));
+        $chuyenKhoa->update($request->only(['ten_chuyen_khoa', 'gioi_thieu_chung']));
 
         return redirect()->route('admin.chuyen-khoa.index')->with('success', 'Cập nhật chuyên khoa thành công!');
     }

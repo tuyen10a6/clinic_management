@@ -40,10 +40,10 @@
                                                     <em class="icon ni ni-file"></em>
                                                     </span><span
                                                     class="nk-menu-text">Hồ sơ bệnh nhân</span></a></li>
-                                        <li class="nk-menu-item"><a href="#"
-                                                                    class="nk-menu-link"><span class="nk-menu-icon"><em
-                                                        class="icon ni ni-growth-fill"></em></span><span
-                                                    class="nk-menu-text">Chỉ định cận lâm sàng</span></a></li>
+{{--                                        <li class="nk-menu-item"><a href="#"--}}
+{{--                                                                    class="nk-menu-link"><span class="nk-menu-icon"><em--}}
+{{--                                                        class="icon ni ni-growth-fill"></em></span><span--}}
+{{--                                                    class="nk-menu-text">Chỉ định cận lâm sàng</span></a></li>--}}
                                         <li class="nk-menu-item"><a href="#"
                                                                     class="nk-menu-link"><span class="nk-menu-icon">
                                                     <em class="icon ni ni-file-docs"></em>

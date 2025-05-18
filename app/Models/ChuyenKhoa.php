@@ -12,4 +12,9 @@ class ChuyenKhoa extends Model
     protected $table = 'chuyen_khoa';
 
     protected $guarded = [];
+
+    public function profileDoctor(): \Illuminate\Database\Eloquent\Relations\HasMany
+    {
+        return $this->hasMany(ProfileDoctor::class, 'chuyen_khoa_id', 'id');
+    }
 }
