@@ -35,7 +35,7 @@
                                                    <em class="icon ni ni-clock-fill"></em>
                                                 </span><span
                                                     class="nk-menu-text">Cập nhật giờ làm việc</span></a></li>
-                                        <li class="nk-menu-item"><a href="{{route('patient.index')}}" class="nk-menu-link"><span
+                                        <li  class="nk-menu-item"><a href="{{route('patient.index')}}" class="nk-menu-link"><span
                                                     class="nk-menu-icon">
                                                     <em class="icon ni ni-file"></em>
                                                     </span><span
@@ -44,12 +44,12 @@
 {{--                                                                    class="nk-menu-link"><span class="nk-menu-icon"><em--}}
 {{--                                                        class="icon ni ni-growth-fill"></em></span><span--}}
 {{--                                                    class="nk-menu-text">Chỉ định cận lâm sàng</span></a></li>--}}
-                                        <li class="nk-menu-item"><a href="#"
+                                        <li class="nk-menu-item {{request()->routeIs('doctor.ke-don-thuoc.*') ? 'active' : ''}}"><a href="{{route('doctor.ke-don-thuoc.create')}}"
                                                                     class="nk-menu-link"><span class="nk-menu-icon">
                                                     <em class="icon ni ni-file-docs"></em>
                                                 </span><span
                                                     class="nk-menu-text">Kê đơn thuốc</span></a></li>
-                                        <li class="nk-menu-item"><a href="#"
+                                        <li class="nk-menu-item"><a href=""
                                                                     class="nk-menu-link"><span class="nk-menu-icon">
                                                   <em class="icon ni ni-eye"></em>
                                                 </span><span

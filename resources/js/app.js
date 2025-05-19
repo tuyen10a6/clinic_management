@@ -1,5 +1,6 @@
 require('./bootstrap');
 import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
+import "select2"
 
 document.addEventListener('DOMContentLoaded', function () {
     const editorElements = document.querySelectorAll('.editor');
@@ -12,3 +13,4 @@ document.addEventListener('DOMContentLoaded', function () {
             });
     });
 });
+

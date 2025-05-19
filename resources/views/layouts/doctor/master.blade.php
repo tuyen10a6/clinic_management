@@ -19,7 +19,6 @@
         </div>
     </div>
 </div>
-@yield('script')
 
 <script src="{{asset('vendor/assets/js/dashlite.js')}}"></script>
 <script src="{{asset('vendor/assets/js/app.js')}}"></script>
@@ -28,5 +27,6 @@
 <script src="{{ asset('/core/js/clipboard.min.js') }}"></script>
 <script src="{{ asset('/core/js/bootstrap.bundle.min.js') }}"></script>
 <script src="{{ asset('/core/js/scripts.js') }}"></script>
+@yield('script')
 </body>
 </html>

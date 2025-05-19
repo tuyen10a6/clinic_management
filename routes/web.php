@@ -11,6 +11,7 @@ use App\Http\Controllers\Doctor\AuthController;
 use App\Http\Controllers\Doctor\ChiDinhController;
 use App\Http\Controllers\Doctor\DoctorController;
 use App\Http\Controllers\Doctor\PatientController;
+use App\Http\Controllers\Doctor\PrescriptionController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\AdminDoctorController;
 use App\Http\Controllers\Admin\AdminDoctorScheduleController;
@@ -44,6 +45,10 @@ Route::middleware(['auth-doctor'])->group(function () {
         Route::get('show-print/{id}', [ChiDinhController::class, 'showPrint'])->name('doctor.show-print');
         Route::post('store', [ChiDinhController::class, 'store'])->name('doctor.chi-dinh.store');
         Route::post('update/{id}', [ChiDinhController::class, 'updateStatus'])->name('doctor.chi-dinh.update');
+    });
+    Route::prefix('ke-don-thuoc')->group(function (){
+        Route::get('create', [PrescriptionController::class, 'create'])->name('doctor.ke-don-thuoc.create');
+        Route::post('post', [PrescriptionController::class, 'store'])->name('doctor.ke-don-thuoc.store');
     });
 });
 Route::middleware(['auth-admin'])->group(function () {

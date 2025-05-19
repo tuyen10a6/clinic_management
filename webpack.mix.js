@@ -16,6 +16,10 @@ let build_js = [
     {
         from: "/resources/js/customer.js",
         to: "/js/customer.js"
+    },
+    {
+        from: "/resources/js/keDonThuoc.js",
+        to: "/js/ke-don-thuoc.js"
     }
 ];
 

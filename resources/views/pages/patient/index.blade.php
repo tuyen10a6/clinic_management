@@ -83,9 +83,9 @@
                         <a href="{{route('doctor.chi-dinh.index', $patient->id)}}" class="btn btn-sm btn-info">
                            Các chỉ định
                         </a>
-                        <a href="" class="btn btn-sm btn-info">
-                            Đơn thuốc
-                        </a>
+{{--                        <a href="" class="btn btn-sm btn-info">--}}
+{{--                            Đơn thuốc--}}
+{{--                        </a>--}}
                     </td>
                 </tr>
             @endforeach
