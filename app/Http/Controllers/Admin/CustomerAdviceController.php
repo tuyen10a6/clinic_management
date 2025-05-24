@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Mail\CustomerAdviceNotification;
 use App\Models\CustomerAdvice;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
 
@@ -57,14 +58,24 @@ class CustomerAdviceController
 
     public function edit($id)
     {
+        $doctors = User::query()->where('permission', 'doctor')->get();
         $advice = CustomerAdvice::query()->findOrFail($id);
-        return view('pages.admin.customer_advice.edit', compact('advice'));
+        return view('pages.admin.customer_advice.edit', compact('advice', 'doctors'));
     }
 
     public function update(Request $request, $id): \Illuminate\Http\RedirectResponse
     {
         $advice = CustomerAdvice::query()->findOrFail($id);
-        $advice->update($request->only(['name', 'phone', 'note', 'status']));
+        $advice->update($request->only([
+            'name',
+            'phone',
+            'note',
+            'status',
+            'doctor_id',
+            'note_doctor',
+            'date'
+        ]));
+
         return redirect()->route('admin.customer-advice.index')->with('success', 'Cập nhật thành công');
     }
 

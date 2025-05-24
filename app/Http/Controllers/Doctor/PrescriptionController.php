@@ -8,13 +8,16 @@ use App\Models\Prescription;
 use App\Models\PrescriptionMedicine;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
 class PrescriptionController
 {
     public function create(Request $request)
     {
-        $doctors = User::query()->where('permission', 'doctor')->get();
+        $doctorId = Auth::id();
+        $doctors = User::query()->where('permission', 'doctor')
+                                ->where('id', $doctorId)->get();
 
         $patients = Patient::query()->get();
 
@@ -23,7 +26,7 @@ class PrescriptionController
         return view('pages/doctor/ke_don_thuoc', compact('doctors', 'patients', 'medicines'));
     }
 
-    public function store(Request $request)
+    public function store(Request $request): \Illuminate\Http\RedirectResponse
     {
         $data = $request->all();
         DB::beginTransaction();
@@ -42,8 +45,8 @@ class PrescriptionController
                     'medicine_id'     => $medicine['medicine_id'],
                     'dosage'          => $medicine['dosage'],
                     'duration'        => $medicine['duration'],
-                    'instructions'     => $medicine['instructions'],
-                 ]);
+                    'instructions'    => $medicine['instructions'],
+                ]);
             }
 
             DB::commit();
@@ -54,6 +57,38 @@ class PrescriptionController
             DB::rollBack();
             return redirect()->route('doctor.ke-don-thuoc.create')->with('error', $e->getMessage());
         }
+    }
+
+    public function index(Request $request)
+    {
+        $doctorId = Auth::id();
+        $search = $request->input('search');
+
+        $prescriptions = Prescription::with(['patient', 'doctor', 'medicines'])
+                                     ->where('doctor_id', $doctorId)
+                                     ->when($search, function ($query, $search) {
+                                         $query->whereHas('patient', function ($q) use ($search) {
+                                             $q->where('full_name', 'like', '%' . $search . '%');
+                                         });
+                                     })
+                                     ->latest()
+                                     ->get();
+
+        return view('pages/doctor/ke_don_thuoc_index', compact('prescriptions', 'search'));
+    }
+
+    public function show($id)
+    {
+        $prescription = Prescription::with(['medicines.medicine', 'doctor', 'patient'])->findOrFail($id);
+
+        return view('pages/doctor/ke_don_thuoc_show', compact('prescription'));
+    }
+
+    public function print($id)
+    {
+        $prescription = Prescription::with(['medicines', 'doctor', 'patient'])->findOrFail($id);
+
+        return view('pages/print/don_thuoc', compact('prescription'));
     }
 
 }

@@ -31,10 +31,10 @@
                                                      </span><span
                                                     class="nk-menu-text">Quản lý lịch hẹn</span></a>
                                         </li>
-                                        <li class="nk-menu-item p-0 pb-1"><a href="#" class="nk-menu-link"><span
+                                        <li class="nk-menu-item p-0 pb-1 {{request()->routeIs('admin.quan-ly-lich-kham.*') ? 'active': ''}}"><a href="{{route('admin.quan-ly-lich-kham.index')}}" class="nk-menu-link"><span
                                                     class="nk-menu-icon">
                                                      </span><span
-                                                    class="nk-menu-text">Quản lý lịch khám</span></a>
+                                                    class="nk-menu-text">Quản lý khám bệnh</span></a>
                                         </li>
                                         <li class="nk-menu-item p-0 pb-1 {{ request()->routeIs('admin.doctor.schedule.*') ? 'active' : '' }}">
                                             <a href="{{ route('admin.doctor.schedule.index') }}" class="nk-menu-link">
@@ -42,7 +42,7 @@
                                                 <span class="nk-menu-text">Giờ làm việc các bác sĩ</span>
                                             </a>
                                         </li>
-                                        <li class="nk-menu-item p-0 pb-1"><a href=""
+                                        <li class="nk-menu-item p-0 pb-1 {{ request()->routeIs('dmin.ho-so-benh-an.*') ? 'active' : '' }}"><a href="{{route('admin.ho-so-benh-an.index')}}"
                                                                              class="nk-menu-link"><span
                                                     class="nk-menu-icon">
                                                     </span><span
@@ -59,11 +59,11 @@
                                                 <span class="nk-menu-text">Danh mục thuốc</span>
                                             </a>
                                         </li>
-                                        <li class="nk-menu-item p-0 pb-1"><a href=""
-                                                                             class="nk-menu-link"><span
-                                                    class="nk-menu-icon">
-                                                </span><span
-                                                    class="nk-menu-text">Các thủ thuật đang thực hiện</span></a></li>
+{{--                                        <li class="nk-menu-item p-0 pb-1"><a href=""--}}
+{{--                                                                             class="nk-menu-link"><span--}}
+{{--                                                    class="nk-menu-icon">--}}
+{{--                                                </span><span--}}
+{{--                                                    class="nk-menu-text">Các thủ thuật đang thực hiện</span></a></li>--}}
                                         <li class="nk-menu-item p-0 pb-1 {{ request()->routeIs('admin.chuyen-khoa.*') ? 'active' : '' }}"><a href="{{route('admin.chuyen-khoa.index')}}"
                                                                              class="nk-menu-link"><span
                                                     class="nk-menu-icon">
@@ -75,17 +75,18 @@
                                                 <span class="nk-menu-text">Danh mục các bác sĩ</span>
                                             </a>
                                         </li>
-                                        <li class="nk-menu-item p-0 pb-1"><a href="#"
-                                                                             class="nk-menu-link"><span
-                                                    class="nk-menu-icon">
-                                                </span><span
-                                                    class="nk-menu-text">Gửi thông báo</span></a>
+                                        <li class="nk-menu-item p-0 pb-1 {{request()->routeIs('admin.notification.*') ? 'active': ''}}">
+                                            <a href="{{route('admin.notification.index')}}" class="nk-menu-link">
+                                                <span class="nk-menu-icon"></span>
+                                                <span class="nk-menu-text">Thông báo</span>
+                                            </a>
                                         </li>
-                                        <li class="nk-menu-item p-0 pb-1"><a href="#"
-                                                                             class="nk-menu-link"><span
-                                                    class="nk-menu-icon">
-                                                </span><span
-                                                    class="nk-menu-text">Xem báo cáo thống kê cá nhân</span></a></li>
+                                        <li class="nk-menu-item p-0 pb-1">
+                                            <a href="{{route('admin.report.index')}}" class="nk-menu-link">
+                                                <span class="nk-menu-icon"></span>
+                                                <span class="nk-menu-text">Xem BCTK phòng khám</span>
+                                            </a>
+                                        </li>
                                 </div>
                             </div>
                         </div>

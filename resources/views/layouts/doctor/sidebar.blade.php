@@ -25,11 +25,11 @@
                                     <ul class="nk-menu">
                                         <li class="nk-menu-heading"><h6 class="overline-title text-primary-alt">Danh
                                                 mục</h6></li>
-                                        <li class="nk-menu-item"><a href="#" class="nk-menu-link"><span
+                                        <li class="nk-menu-item {{request()->routeIs('doctor.lich-kham-du-bao.*') ? 'active' : ''}}"><a href="{{route('doctor.lich-kham-du-bao.index')}}" class="nk-menu-link"><span
                                                     class="nk-menu-icon">
                                                     <em class="icon ni ni-calendar-alt-fill"></em>
                                                      </span><span
-                                                    class="nk-menu-text">Quản lý lịch khám</span></a></li>
+                                                    class="nk-menu-text">Lịch khám dự báo</span></a></li>
                                         <li class="nk-menu-item"><a href="{{route('doctor-schedule-view')}}"
                                                                     class="nk-menu-link"><span class="nk-menu-icon">
                                                    <em class="icon ni ni-clock-fill"></em>
@@ -44,22 +44,22 @@
 {{--                                                                    class="nk-menu-link"><span class="nk-menu-icon"><em--}}
 {{--                                                        class="icon ni ni-growth-fill"></em></span><span--}}
 {{--                                                    class="nk-menu-text">Chỉ định cận lâm sàng</span></a></li>--}}
-                                        <li class="nk-menu-item {{request()->routeIs('doctor.ke-don-thuoc.*') ? 'active' : ''}}"><a href="{{route('doctor.ke-don-thuoc.create')}}"
+                                        <li class="nk-menu-item {{request()->routeIs('doctor.ke-don-thuoc.*') ? 'active' : ''}}"><a href="{{route('doctor.ke-don-thuoc.index')}}"
                                                                     class="nk-menu-link"><span class="nk-menu-icon">
                                                     <em class="icon ni ni-file-docs"></em>
                                                 </span><span
                                                     class="nk-menu-text">Kê đơn thuốc</span></a></li>
-                                        <li class="nk-menu-item"><a href=""
-                                                                    class="nk-menu-link"><span class="nk-menu-icon">
-                                                  <em class="icon ni ni-eye"></em>
-                                                </span><span
-                                                    class="nk-menu-text">Theo dõi quá trình điều trị</span></a></li>
-                                        <li class="nk-menu-item"><a href="#"
+{{--                                        <li class="nk-menu-item"><a href=""--}}
+{{--                                                                    class="nk-menu-link"><span class="nk-menu-icon">--}}
+{{--                                                  <em class="icon ni ni-eye"></em>--}}
+{{--                                                </span><span--}}
+{{--                                                    class="nk-menu-text">Theo dõi quá trình điều trị</span></a></li>--}}
+                                        <li class="nk-menu-item {{request()->routeIs('doctor.notification.*') ? 'active' : ''}}"><a href="{{route('doctor.notification.index')}}"
                                                                     class="nk-menu-link"><span class="nk-menu-icon">
                                                   <em class="icon ni ni-users"></em>
                                                 </span><span
-                                                    class="nk-menu-text">Giao tiếp nội bộ và tư vấn</span></a></li>
-                                        <li class="nk-menu-item"><a href="#"
+                                                    class="nk-menu-text">Thông báo</span></a></li>
+                                        <li class="nk-menu-item {{request()->routeIs('doctor.report.*') ? 'active' : ''}}"><a href="{{route('doctor.report.index')}}"
                                                                     class="nk-menu-link"><span class="nk-menu-icon">
                                                     <em class="icon ni ni-reports"></em>
                                                 </span><span

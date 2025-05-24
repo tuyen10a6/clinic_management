@@ -76,7 +76,6 @@
     <img src="{{ asset('statics/images/logo-top.png') }}" class="logo" alt="Logo">
     <div class="title">PHIẾU CHỈ ĐỊNH XÉT NGHIỆM</div>
 </div>
-
 <div class="patient-info">
     <p><strong>Họ tên bệnh nhân:</strong> {{ $patient->full_name }}</p>
     <p><strong>Ngày sinh:</strong> {{ \Carbon\Carbon::parse($patient->birth_date)->format('d/m/Y') }}</p>

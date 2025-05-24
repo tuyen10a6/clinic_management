@@ -10,12 +10,18 @@ use App\Http\Controllers\Customer\IntroductionController;
 use App\Http\Controllers\Doctor\AuthController;
 use App\Http\Controllers\Doctor\ChiDinhController;
 use App\Http\Controllers\Doctor\DoctorController;
+use App\Http\Controllers\Doctor\DoctorReportController;
+use App\Http\Controllers\Doctor\DoctorScheduleController;
 use App\Http\Controllers\Doctor\PatientController;
 use App\Http\Controllers\Doctor\PrescriptionController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\AdminDoctorController;
 use App\Http\Controllers\Admin\AdminDoctorScheduleController;
 use App\Http\Controllers\Admin\AdminChuyenKhoaController;
+use App\Http\Controllers\Admin\AdminScheduleManagerController;
+use App\Http\Controllers\Admin\NotificationController;
+use App\Http\Controllers\Admin\ReportController;
+use App\Http\Controllers\Admin\AdminPatientController;
 
 Route::get('login', [AuthController::class, 'index'])->name('login');
 Route::post('post-login', [AuthController::class, 'login'])->name('post-login');
@@ -46,10 +52,27 @@ Route::middleware(['auth-doctor'])->group(function () {
         Route::post('store', [ChiDinhController::class, 'store'])->name('doctor.chi-dinh.store');
         Route::post('update/{id}', [ChiDinhController::class, 'updateStatus'])->name('doctor.chi-dinh.update');
     });
-    Route::prefix('ke-don-thuoc')->group(function (){
+    Route::prefix('ke-don-thuoc')->group(function () {
+        Route::get('index', [PrescriptionController::class, 'index'])->name('doctor.ke-don-thuoc.index');
+        Route::get('show/{id}', [PrescriptionController::class, 'show'])->name('doctor.ke-don-thuoc.show');
         Route::get('create', [PrescriptionController::class, 'create'])->name('doctor.ke-don-thuoc.create');
         Route::post('post', [PrescriptionController::class, 'store'])->name('doctor.ke-don-thuoc.store');
+        Route::get('print/{id}', [PrescriptionController::class, 'print'])->name('doctor.ke-don-thuoc.print');
     });
+    Route::prefix('lich-kham-du-bao')->group(function () {
+        Route::get('index', [DoctorScheduleController::class, 'index'])->name('doctor.lich-kham-du-bao.index');
+        Route::get('edit/{id}', [DoctorScheduleController::class, 'edit'])->name('doctor.lich-kham-du-bao.edit');
+        Route::post('update/{id}', [DoctorScheduleController::class, 'updateDoctorStatus'])->name('doctor.lich-kham-du-bao.update');
+    });
+    Route::prefix('doctor/notification')->group(function () {
+         Route::get('index', [\App\Http\Controllers\Doctor\DoctorNotificationController::class, 'index'])->name('doctor.notification.index');
+        Route::get('create', [\App\Http\Controllers\Doctor\DoctorNotificationController::class, 'create'])->name('doctor.notification.create');
+        Route::post('send', [\App\Http\Controllers\Doctor\DoctorNotificationController::class, 'send'])->name('doctor.notification.send');
+    });
+    Route::prefix('doctor/report')->group(function () {
+        Route::get('index', [DoctorReportController::class, 'index'])->name('doctor.report.index');
+    });
+
 });
 Route::middleware(['auth-admin'])->group(function () {
     Route::post('admin/logout', [AuthController::class, 'logout'])->name('admin-logout');
@@ -93,6 +116,22 @@ Route::middleware(['auth-admin'])->group(function () {
         Route::post('update/{id}', [MedicineController::class, 'update'])->name('medicines.update');
         Route::post('/{id}', [MedicineController::class, 'destroy'])->name('medicines.destroy');
     });
+    Route::prefix('quan-ly-lich-kham')->group(function () {
+        Route::get('index', [AdminScheduleManagerController::class, 'index'])->name('admin.quan-ly-lich-kham.index');
+        Route::get('show/{id}', [AdminScheduleManagerController::class, 'show'])->name('admin.quan-ly-lich-kham.show');
+    });
+    Route::prefix('admin/notification')->group(function () {
+        Route::get('index', [NotificationController::class, 'index'])->name('admin.notification.index');
+        Route::get('create', [NotificationController::class, 'create'])->name('admin.notification.create');
+        Route::post('send', [NotificationController::class, 'send'])->name('admin.notification.send');
+    });
+    Route::prefix('admin/report')->group(function () {
+        Route::get('index', [ReportController::class, 'index'])->name('admin.report.index');
+    });
+   Route::prefix('ho-so-benh-an')->group(function () {
+      Route::get('index', [AdminPatientController::class, 'index'])->name('admin.ho-so-benh-an.index');
+      Route::get('show/{id}', [AdminPatientController::class, 'show'])->name('admin.ho-so-benh-an.show');
+   });
 });
 // Customer
 Route::get('/', [HomeController::class, 'index'])->name('home');
